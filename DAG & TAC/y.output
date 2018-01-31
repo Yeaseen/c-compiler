@@ -1,0 +1,240 @@
+Grammar
+
+    0 $accept: line $end
+
+    1 line: expr NEWLINE
+
+    2 expr: expr PLUS term
+    3     | expr MINUS term
+    4     | term
+
+    5 term: term ASTERISK factor
+    6     | term SLASH factor
+    7     | factor
+
+    8 factor: LPAREN expr RPAREN
+    9       | NUMBER
+   10       | ID
+
+
+Terminals, with rules where they appear
+
+$end (0) 0
+error (256)
+NEWLINE (258) 1
+PLUS (259) 2
+MINUS (260) 3
+SLASH (261) 6
+ASTERISK (262) 5
+LPAREN (263) 8
+RPAREN (264) 8
+NUMBER (265) 9
+ID (266) 10
+
+
+Nonterminals, with rules where they appear
+
+$accept (12)
+    on left: 0
+line (13)
+    on left: 1, on right: 0
+expr (14)
+    on left: 2 3 4, on right: 1 2 3 8
+term (15)
+    on left: 5 6 7, on right: 2 3 4 5 6
+factor (16)
+    on left: 8 9 10, on right: 5 6 7
+
+
+State 0
+
+    0 $accept: . line $end
+
+    LPAREN  shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    ID      shift, and go to state 3
+
+    line    go to state 4
+    expr    go to state 5
+    term    go to state 6
+    factor  go to state 7
+
+
+State 1
+
+    8 factor: LPAREN . expr RPAREN
+
+    LPAREN  shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    ID      shift, and go to state 3
+
+    expr    go to state 8
+    term    go to state 6
+    factor  go to state 7
+
+
+State 2
+
+    9 factor: NUMBER .
+
+    $default  reduce using rule 9 (factor)
+
+
+State 3
+
+   10 factor: ID .
+
+    $default  reduce using rule 10 (factor)
+
+
+State 4
+
+    0 $accept: line . $end
+
+    $end  shift, and go to state 9
+
+
+State 5
+
+    1 line: expr . NEWLINE
+    2 expr: expr . PLUS term
+    3     | expr . MINUS term
+
+    NEWLINE  shift, and go to state 10
+    PLUS     shift, and go to state 11
+    MINUS    shift, and go to state 12
+
+
+State 6
+
+    4 expr: term .
+    5 term: term . ASTERISK factor
+    6     | term . SLASH factor
+
+    SLASH     shift, and go to state 13
+    ASTERISK  shift, and go to state 14
+
+    $default  reduce using rule 4 (expr)
+
+
+State 7
+
+    7 term: factor .
+
+    $default  reduce using rule 7 (term)
+
+
+State 8
+
+    2 expr: expr . PLUS term
+    3     | expr . MINUS term
+    8 factor: LPAREN expr . RPAREN
+
+    PLUS    shift, and go to state 11
+    MINUS   shift, and go to state 12
+    RPAREN  shift, and go to state 15
+
+
+State 9
+
+    0 $accept: line $end .
+
+    $default  accept
+
+
+State 10
+
+    1 line: expr NEWLINE .
+
+    $default  reduce using rule 1 (line)
+
+
+State 11
+
+    2 expr: expr PLUS . term
+
+    LPAREN  shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    ID      shift, and go to state 3
+
+    term    go to state 16
+    factor  go to state 7
+
+
+State 12
+
+    3 expr: expr MINUS . term
+
+    LPAREN  shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    ID      shift, and go to state 3
+
+    term    go to state 17
+    factor  go to state 7
+
+
+State 13
+
+    6 term: term SLASH . factor
+
+    LPAREN  shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    ID      shift, and go to state 3
+
+    factor  go to state 18
+
+
+State 14
+
+    5 term: term ASTERISK . factor
+
+    LPAREN  shift, and go to state 1
+    NUMBER  shift, and go to state 2
+    ID      shift, and go to state 3
+
+    factor  go to state 19
+
+
+State 15
+
+    8 factor: LPAREN expr RPAREN .
+
+    $default  reduce using rule 8 (factor)
+
+
+State 16
+
+    2 expr: expr PLUS term .
+    5 term: term . ASTERISK factor
+    6     | term . SLASH factor
+
+    SLASH     shift, and go to state 13
+    ASTERISK  shift, and go to state 14
+
+    $default  reduce using rule 2 (expr)
+
+
+State 17
+
+    3 expr: expr MINUS term .
+    5 term: term . ASTERISK factor
+    6     | term . SLASH factor
+
+    SLASH     shift, and go to state 13
+    ASTERISK  shift, and go to state 14
+
+    $default  reduce using rule 3 (expr)
+
+
+State 18
+
+    6 term: term SLASH factor .
+
+    $default  reduce using rule 6 (term)
+
+
+State 19
+
+    5 term: term ASTERISK factor .
+
+    $default  reduce using rule 5 (term)

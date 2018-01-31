@@ -1,0 +1,102 @@
+Line no 1->type_specifier	: INT
+
+Line no 1->parameter_list2 : 
+
+Line no 2->type_specifier	: INT
+
+Line no 2->declaration_list : ID
+ d 
+
+ScopeTable--> 2 
+<d,ID,-1111>
+
+ScopeTable--> 1 
+
+Line no 2->var_declaration : type_specifier declaration_list SEMICOLON
+
+Line no 2->statement : var_declaration
+
+Line no 2-> statements : statement
+
+Line no 3-> variable: ID
+ d
+
+Line no 3->factor: CONST_INT
+ 8
+
+Line no 3->unary_expression: factor
+
+Line no 3->term :	unary_expression
+
+Line no 3->simple_expression : term
+
+Line no 3->rel_expression	: simple_expression
+
+Line no 3->logic_expression : rel_expression
+
+Line no 3->expression-> variable ASSIGNOP logic_expression
+
+ScopeTable--> 2 
+<d,ID,8>
+
+ScopeTable--> 1 
+
+Line no 3->expression_statement : expression SEMICOLON
+
+Line no 3->statement : expression_statement
+
+Line no 3-> statements : statements statement
+
+Line no 4->type_specifier	: INT
+
+Line no 4->declaration_list : ID LTHIRD CONST_INT RTHIRD
+ c
+
+ScopeTable--> 2 
+<c,ID,{-1,-1,-1}>
+<d,ID,8>
+
+ScopeTable--> 1 
+
+Line no 4->var_declaration : type_specifier declaration_list SEMICOLON
+
+Line no 4->statement : var_declaration
+
+Line no 4-> statements : statements statement
+
+Line no 5->factor: CONST_INT
+ 0
+
+Line no 5->unary_expression: factor
+
+Line no 5->term :	unary_expression
+
+Line no 5->simple_expression : term
+
+Line no 5->rel_expression	: simple_expression
+
+Line no 5->logic_expression : rel_expression
+
+Line no 5->expression-> logic_expression
+
+Line no 5->statement: RETURN expression SEMICOLON
+
+Line no 5-> statements : statements statement
+
+Line no 6->compound_statement : LCURL statements RCURL
+
+Line no 6->func_definition:type_specifier ID LPAREN parameter_list2 RPAREN compound_statement
+
+ScopeTable--> 1 
+<main,Function,0{}>
+
+Line no 6->unit: func_definition
+
+Line no 6->program: unit 
+
+Line no 7->start: program
+
+Total Line: 7
+
+Total Error: 0
+

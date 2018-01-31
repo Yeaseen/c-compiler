@@ -1,0 +1,217 @@
+Line no 1->type_specifier	: INT
+
+Line no 1->type_specifier	: INT
+
+Line no 1->parameter_list : type_specifier ID
+ a 
+
+ScopeTable--> 2 
+<a,ID,-1111>
+
+ScopeTable--> 1 
+
+Line no 1->parameter_list2 : parameter_list
+
+Line no 2->factor: CONST_INT
+ 2
+
+Line no 2->unary_expression: factor
+
+Line no 2->term :	unary_expression
+
+Line no 2-> variable: ID
+ a
+
+Line no 2->factor: variable
+
+Line no 2->unary_expression: factor
+
+Line no 2->term :	term MULOP unary_expression
+
+ScopeTable--> 2 
+<a,ID,-1111>
+
+ScopeTable--> 1 
+
+Line no 2->simple_expression : term
+
+Line no 2->rel_expression	: simple_expression
+
+Line no 2->logic_expression : rel_expression
+
+Line no 2->expression-> logic_expression
+
+Line no 2->statement: RETURN expression SEMICOLON
+
+Line no 2-> statements : statement
+
+Line no 3-> variable: ID
+ a
+
+Line no 3->factor: CONST_INT
+ 9
+
+Line no 3->unary_expression: factor
+
+Line no 3->term :	unary_expression
+
+Line no 3->simple_expression : term
+
+Line no 3->rel_expression	: simple_expression
+
+Line no 3->logic_expression : rel_expression
+
+Line no 3->expression-> variable ASSIGNOP logic_expression
+
+ScopeTable--> 2 
+<a,ID,9>
+
+ScopeTable--> 1 
+
+Line no 3->expression_statement : expression SEMICOLON
+
+Line no 3->statement : expression_statement
+
+Line no 3-> statements : statements statement
+
+Line no 4->compound_statement : LCURL statements RCURL
+
+Line no 4->func_definition:type_specifier ID LPAREN parameter_list2 RPAREN compound_statement
+
+ScopeTable--> 1 
+<f,Function,0{a2:0} >
+
+Line no 4->unit: func_definition
+
+Line no 4->program: unit 
+
+Line no 8->type_specifier	: INT
+
+Line no 8->parameter_list2 : 
+
+Line no 9->type_specifier	: INT
+
+Line no 9->declaration_list : ID
+ a 
+
+ScopeTable--> 2 
+<a,ID,-1111>
+
+ScopeTable--> 1 
+<f,Function,0{a2:0} >
+
+Line no 9->declaration_list : declaration_list COMMA ID
+ b
+
+ScopeTable--> 2 
+<b,ID,-1111>
+<a,ID,-1111>
+
+ScopeTable--> 1 
+<f,Function,0{a2:0} >
+
+Line no 9->var_declaration : type_specifier declaration_list SEMICOLON
+
+Line no 9->statement : var_declaration
+
+Line no 9-> statements : statement
+
+Line no 10-> variable: ID
+ a
+
+Line no 10->factor: CONST_INT
+ 1
+
+Line no 10->unary_expression: factor
+
+Line no 10->term :	unary_expression
+
+Line no 10->simple_expression : term
+
+Line no 10->rel_expression	: simple_expression
+
+Line no 10->logic_expression : rel_expression
+
+Line no 10->expression-> variable ASSIGNOP logic_expression
+
+ScopeTable--> 2 
+<b,ID,-1111>
+<a,ID,1>
+
+ScopeTable--> 1 
+<f,Function,0{a2:0} >
+
+Line no 10->expression_statement : expression SEMICOLON
+
+Line no 10->statement : expression_statement
+
+Line no 10-> statements : statements statement
+
+Line no 11-> variable: ID
+ b
+
+Line no 11->factor: CONST_INT
+ 2
+
+Line no 11->unary_expression: factor
+
+Line no 11->term :	unary_expression
+
+Line no 11->simple_expression : term
+
+Line no 11->rel_expression	: simple_expression
+
+Line no 11->logic_expression : rel_expression
+
+Line no 11->expression-> variable ASSIGNOP logic_expression
+
+ScopeTable--> 2 
+<b,ID,2>
+<a,ID,1>
+
+ScopeTable--> 1 
+<f,Function,0{a2:0} >
+
+Line no 11->expression_statement : expression SEMICOLON
+
+Line no 11->statement : expression_statement
+
+Line no 11-> statements : statements statement
+
+Line no 13->factor: CONST_INT
+ 0
+
+Line no 13->unary_expression: factor
+
+Line no 13->term :	unary_expression
+
+Line no 13->simple_expression : term
+
+Line no 13->rel_expression	: simple_expression
+
+Line no 13->logic_expression : rel_expression
+
+Line no 13->expression-> logic_expression
+
+Line no 13->statement: RETURN expression SEMICOLON
+
+Line no 13-> statements : statements statement
+
+Line no 14->compound_statement : LCURL statements RCURL
+
+Line no 14->func_definition:type_specifier ID LPAREN parameter_list2 RPAREN compound_statement
+
+ScopeTable--> 1 
+<main,Function,0{} >
+<f,Function,0{a2:0} >
+
+Line no 14->unit: func_definition
+
+Line no 14->program: unit program
+
+Line no 15->start: program
+
+Total Line: 15
+
+Total Error: 0
+
