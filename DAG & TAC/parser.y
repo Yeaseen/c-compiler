@@ -43,15 +43,31 @@ factor:  LPAREN expr RPAREN  { $$ = $2; }
       ;
 %%
 
-int main(int argc,char *argv[])
+int main(int argc, char *argv[])
 {
-	// input file contains a single line with expression
-	// write the output of your program in a text file named output.txt
+    // input file contains a single line with expression
+    // write the output of your program in a text file named output.txt
     if(argc == 1) { 
-		printf("Please provide input file");
-		return 0;
-	}
-	yyin = fopen(argv[1], "r");
-	yyparse();
+        printf("Please provide input file\n");
+        return 0;
+    }
+
+    // Redirect standard output to 'output.txt'
+    freopen("output.txt", "w", stdout);
+
+    yyin = fopen(argv[1], "r");
+    if (!yyin) {
+        printf("Error opening input file.\n");
+        return 1; // Return an error code
+    }
+
+    yyparse();
+
+    // Close the input file
+    fclose(yyin);
+
+    // Optionally, restore stdout to its original state if needed
+    // fclose(stdout);
+
     return 0;
 }
