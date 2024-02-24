@@ -20,7 +20,7 @@ void yyerror(char *);
 
 extern FILE* errorout;
 int lin_count=1;
-int error_count=0;;
+int error_count=0;
 int c;
 
 

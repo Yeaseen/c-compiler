@@ -89,17 +89,6 @@ void print_dag_array(){
 			cout<<dag_array[i]->dagIndex<<"-->  "<<dag_array[i]->label<<" "<<dag_array[i]->lChild<<" "<<dag_array[i]->rChild<<endl;
 	}
 
-
-
-
-
-
-
-
-
-
-
-
 	// write code for printing a all entries of dag_array
 	// you should print exactly in the way shown in sample output
 }
